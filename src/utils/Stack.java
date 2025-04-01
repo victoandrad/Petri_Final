@@ -43,11 +43,12 @@ public class Stack implements IStack {
 
     @Override
     public boolean removeSequence(Collection<Integer> elements) {
+        boolean found = false;
         for (Integer element : elements) {
             removeElement(element);
+            found = true;
         }
-        // Eu não entendi o sentido disso.
-        return true;
+        return found;
     }
 
     @Override
@@ -64,7 +65,6 @@ public class Stack implements IStack {
 
     @Override
     public boolean isFull() {
-        // Eu não entendi o sentido disso numa estrutura dinâmica.
         return false;
     }
 
@@ -80,12 +80,14 @@ public class Stack implements IStack {
             if (aux.getValue().equals(element)) {
                 return true;
             }
+            aux = aux.getNext();
         }
         return false;
     }
 
     @Override
     public void sortAscending() {
+        // BUBBLE SORT ALGORITHM
         if (this.top == null || this.top.getNext() == null) return;
         boolean swapped;
         do {
@@ -105,6 +107,7 @@ public class Stack implements IStack {
 
     @Override
     public void sortDescending() {
+        // BUBBLE SORT ALGORITHM
         if (this.top == null || this.top.getNext() == null) return;
         boolean swapped;
         do {
