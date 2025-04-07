@@ -25,8 +25,12 @@ public class Stack implements IStack {
         Node aux = this.top;
         while (aux != null) {
             if (aux.getValue().equals(element)) {
-                aux.getPrevious().setNext(aux.getNext());
-                aux.getNext().setPrevious(aux.getPrevious());
+                if (aux.getPrevious() != null) {
+                    aux.getPrevious().setNext(aux.getNext());
+                }
+                if (aux.getNext() != null) {
+                    aux.getNext().setPrevious(aux.getPrevious());
+                }
                 return true;
             }
             aux = aux.getNext();
