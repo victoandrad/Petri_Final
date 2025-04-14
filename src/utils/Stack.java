@@ -7,7 +7,7 @@ public class Stack implements IStack {
     private Node top;
 
     public Stack() {
-        top = null;
+        this.top = null;
     }
 
     @Override
