@@ -187,8 +187,7 @@ public class Stack implements IStack {
     @Override
     public Node getLastElement() {
         Node aux = this.top;
-        while (aux != null) {
-            if (aux.getNext() == null) break;
+        while (aux != null && aux.getNext() != null) {
             aux = aux.getNext();
         }
         return aux;
