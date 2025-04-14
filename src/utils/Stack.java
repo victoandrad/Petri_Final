@@ -27,6 +27,8 @@ public class Stack implements IStack {
             if (aux.getValue().equals(element)) {
                 if (aux.getPrevious() != null) {
                     aux.getPrevious().setNext(aux.getNext());
+                } else {
+                    this.top = aux.getNext();
                 }
                 if (aux.getNext() != null) {
                     aux.getNext().setPrevious(aux.getPrevious());
@@ -59,11 +61,18 @@ public class Stack implements IStack {
     public void removeAllOccurrences(Integer element) {
         Node aux = this.top;
         while (aux != null) {
+            Node next = aux.getNext();
             if (aux.getValue().equals(element)) {
-                aux.getPrevious().setNext(aux.getNext());
-                aux.getNext().setPrevious(aux.getPrevious());
+                if (aux.getPrevious() != null) {
+                    aux.getPrevious().setNext(aux.getNext());
+                } else {
+                    this.top = aux.getNext();
+                }
+                if (aux.getNext() != null) {
+                    aux.getNext().setPrevious(aux.getPrevious());
+                }
             }
-            aux = aux.getNext();
+            aux = next;
         }
     }
 
@@ -179,6 +188,7 @@ public class Stack implements IStack {
     public Node getLastElement() {
         Node aux = this.top;
         while (aux != null) {
+            if (aux.getNext() == null) break;
             aux = aux.getNext();
         }
         return aux;
