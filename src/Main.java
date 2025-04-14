@@ -1,33 +1,26 @@
 import utils.Stack;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-
-        Stack stack = new Stack();
         Scanner scanner = new Scanner(System.in);
+        Stack stack = new Stack();
 
         int option = 1;
-        int number = 0;
-
         while (option != 17) {
             printMenu();
-            option = scanner.nextInt();
-
+            option = Integer.parseInt(scanner.next());
             switch (option) {
                 case 1:
                     System.out.println(">>> Insert element");
                     System.out.print("Enter number: ");
-                    number = scanner.nextInt();
-                    stack.insertElement(number);
+                    stack.insertElement(Integer.parseInt(scanner.next()));
                     break;
                 case 2:
                     System.out.println(">>> Remove element");
                     System.out.print("Enter number: ");
-                    number = scanner.nextInt();
-                    stack.removeElement(number);
+                    stack.removeElement(Integer.parseInt(scanner.next()));
                     break;
                 case 3:
                     System.out.println(">>> insertSequence");
@@ -46,8 +39,7 @@ public class Main {
                 case 5:
                     System.out.println(">>> removeAllOccurrences");
                     System.out.print("Enter number: ");
-                    number = scanner.nextInt();
-                    stack.removeAllOccurrences(number);
+                    stack.removeAllOccurrences(Integer.parseInt(scanner.next()));
                     break;
                 case 6:
                     System.out.println(">>> isFull");
@@ -59,19 +51,17 @@ public class Main {
                     break;
                 case 8:
                     System.out.println(">>> searchElement");
-                    boolean result = stack.searchElement(number);
-                    System.out.println("Element found: " + result);
+                    System.out.print("Enter number: ");
+                    System.out.println("Element found: " + (stack.searchElement(Integer.parseInt(scanner.next())) ? "YES" : "NO"));
                     break;
                 case 9:
                     System.out.println(">>> sortAscending");
                     stack.sortAscending();
-                    System.out.print("Stack sorted ascending: ");
                     stack.display();
                     break;
                 case 10:
                     System.out.println(">>> sortDescending");
                     stack.sortDescending();
-                    System.out.print("Stack sorted descending: ");
                     stack.display();
                     break;
                 case 11:
@@ -81,9 +71,9 @@ public class Main {
                 case 12:
                     System.out.println(">>> editElement");
                     System.out.print("Enter old number: ");
-                    int oldNumber = scanner.nextInt();
+                    int oldNumber = Integer.parseInt(scanner.next());
                     System.out.print("Enter new number: ");
-                    int newNumber = scanner.nextInt();
+                    int newNumber = Integer.parseInt(scanner.next());
                     stack.editElement(oldNumber, newNumber);
                     break;
                 case 13:
@@ -107,6 +97,7 @@ public class Main {
             scanner.nextLine();
             scanner.nextLine();
         }
+        scanner.close();
         System.out.println("Bye ;)");
     }
 
